@@ -40,7 +40,9 @@ crosstab is a javascript utility library for inter-tab communication on the same
 | FireFox |       30+      |
 | Safari  |        6.1+    |
 
-No Mobile browser is supported.
+**This fork also supports Mobile browsers, but use it with caution, it may not work well for all use cases.  Warning: Background tabs in mobile browsers may have their JS frozen, in which case they won't send or receive messages while they're in the background.  Inbound messages will be queued up for background tabs, and they will be consumed when the tab regains focus.**<br/>
+-massaroni
+
 
 # API #
 

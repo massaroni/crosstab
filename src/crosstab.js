@@ -628,13 +628,18 @@
     };
 
     crosstab.id = util.generateId();
-    crosstab.supported = !!localStorage && window.addEventListener && !isMobile && setItemAllowed;
+    crosstab.supported = !!localStorage && window.addEventListener && setItemAllowed;
+    crosstab.isMobile = isMobile;
     crosstab.util = util;
     crosstab.broadcast = broadcast;
     crosstab.broadcastMaster = broadcastMaster;
     crosstab.on = util.events.on;
     crosstab.once = util.events.once;
     crosstab.off = util.events.off;
+
+    if (isMobile && crosstab.supported) {
+        console.log('crosstab Warning: on mobile browsers, background tabs\' JS may be frozen, so crosstab messages to those tabs may be delayed until the tab regains focus.');
+    }
 
     // 10 minute timeout
     var CACHE_TIMEOUT = 10 * 60 * 1000;
